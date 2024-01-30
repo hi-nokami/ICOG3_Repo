@@ -130,13 +130,13 @@ export default function Home() {
       });
       await txn.wait();
 
-      // setCongratulationVisible(true);
+      setCongratulationVisible(true);
 
-      // // Hide the message after 5 seconds
-      // setTimeout(() => {
-      //   setCongratulationVisible(false);
-      // }, 5000);
-      alert("Congratulations you have claimed your NFT tokens");
+      // Hide the message after 5 seconds
+      setTimeout(() => {
+        setCongratulationVisible(false);
+      }, 5000);
+      // alert("Congratulations you have claimed your NFT tokens");
 
       setLoading(false);
 
@@ -324,41 +324,41 @@ export default function Home() {
       return (
         <div className={styles.description}>
           {loading ?
-          (
-            <div className="flex justify-center type z-10 mt-16 gap-4 flex-col items-center">
-              <h1 className="z-10 type text-2xl">Minting Your Token ... </h1>
-              <img src="/gif/shrio.gif" alt=".." className="z-10 w-[200px]"/>
-            </div>
-          )
-          
-          :  (
-            <div className="flex justify-center flex-col items-center p-3 mt-4 z-10">
-              <div className="flex flex-col items-center gap-4 type">
-                <div className="type tracking-wider text-white z-10">
-                  Claim or Mint Crypto G3 tokens here!!!
-                </div>
-                <input
-                  className="border-none outline-none px-2 p-2 rounded text-black z-10 font-extrabold text-lg  text-center"
-                  type="number"
-                  placeholder="Amount Of Tokens"
-                  onChange={(e) => {
-                    try {
-                      setTokensToBeMintedByUser(BigNumber.from(e.target.value));
-                    } catch (err) {
-                      console.error(err);
-                    }
-                  }}
-                />
+            (
+              <div className="flex justify-center type z-10 mt-16 gap-4 flex-col items-center">
+                <h1 className="z-10 type text-2xl">Minting Your Token ... </h1>
+                <img src="/gif/shrio.gif" alt=".." className="z-10 w-[200px]" />
               </div>
-              <br />
-              <button
-                className="bg-[#3783ede5] text-white z-10 rounded-lg px-3 p-2 flex gap-2 items-center justify-center pop mt-4"
-                onClick={() => mintToken(tokensToBeMintedByUser)}
-              >
-                Mint Tokens <IoArrowForwardSharp />
-              </button>
-            </div>
-          ) }
+            )
+
+            : (
+              <div className="flex justify-center flex-col items-center p-3 mt-4 z-10">
+                <div className="flex flex-col items-center gap-4 type">
+                  <div className="type tracking-wider text-white z-10">
+                    Claim or Mint Crypto G3 tokens here!!!
+                  </div>
+                  <input
+                    className="border-none outline-none px-2 p-2 rounded text-black z-10 font-extrabold text-lg  text-center"
+                    type="number"
+                    placeholder="Amount Of Tokens"
+                    onChange={(e) => {
+                      try {
+                        setTokensToBeMintedByUser(BigNumber.from(e.target.value));
+                      } catch (err) {
+                        console.error(err);
+                      }
+                    }}
+                  />
+                </div>
+                <br />
+                <button
+                  className="bg-[#3783ede5] text-white z-10 rounded-lg px-3 p-2 flex gap-2 items-center justify-center pop mt-4"
+                  onClick={() => mintToken(tokensToBeMintedByUser)}
+                >
+                  Mint Tokens <IoArrowForwardSharp />
+                </button>
+              </div>
+            )}
         </div>
       );
     }
@@ -408,7 +408,7 @@ export default function Home() {
             </div>
           </div>
           {walletConnected ? (
-            <div>
+            <div className="z-10">
               {/* <h1 className={styles.subTitle}>
                 Total {utils.formatEther(totalTokensToBeMinted)} tokens Minted
               </h1>
@@ -417,9 +417,12 @@ export default function Home() {
                 tokens
               </h1> */}
               {/* {renderClaim()} */}
-              {/* {congratulationVisible  ? (<div className="z-10 text-white">Congratulations</div>):(<div> */}
-                {renderMint()}
-                {/* </div>)} */}
+              {congratulationVisible  ? (
+              <div className="z-20 mt-6  flex flex-col items-center text-center  text-white"><div className="z-10 text-2xl font-extrabold tracking-wider league">Congratulations you have claimed your G3 tokens!!</div><img src="/gif/shiro02.gif" alt=".." className="z-10 w-[200px] mt-4" /></div>
+              )
+              :(<div>
+              {renderMint()}
+              </div>)}
 
             </div>
           ) : (
