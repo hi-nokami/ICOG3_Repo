@@ -130,13 +130,13 @@ export default function Home() {
       });
       await txn.wait();
 
-      setCongratulationVisible(true);
+      // setCongratulationVisible(true);
 
-      // Hide the message after 5 seconds
-      setTimeout(() => {
-        setCongratulationVisible(false);
-      }, 5000);
-
+      // // Hide the message after 5 seconds
+      // setTimeout(() => {
+      //   setCongratulationVisible(false);
+      // }, 5000);
+      alert("Congratulations you have claimed your NFT tokens");
 
       setLoading(false);
 
@@ -417,7 +417,9 @@ export default function Home() {
                 tokens
               </h1> */}
               {/* {renderClaim()} */}
-              {congratulationVisible  ? (<div className="z-10 text-white">Congratulations</div>):(<div>{renderMint()}</div>)}
+              {/* {congratulationVisible  ? (<div className="z-10 text-white">Congratulations</div>):(<div> */}
+                {renderMint()}
+                {/* </div>)} */}
 
             </div>
           ) : (
